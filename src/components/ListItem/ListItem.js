@@ -1,11 +1,13 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { Fonts } from "../utils/fonts";
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { Fonts } from "../../utils/fonts";
 
 const ListItem = (props) => (
-  <View style={styles.listItem}>
-    <Text style={styles.listItemText}>{props.placeName}</Text>
-  </View>
+  <TouchableOpacity onPress={props.onItemPressed}>
+    <View style={styles.listItem}>
+      <Text style={styles.listItemText}>{props.placeName}</Text>
+    </View>
+  </TouchableOpacity>
 );
 
 export default ListItem;
@@ -15,9 +17,6 @@ const styles = StyleSheet.create({
     width: "100%",
     padding: 10,
     backgroundColor: "#eee",
-    // borderWidth: 1,
-    // borderColor: "#eee",
-    // borderBottomColor: "lightgray",
     marginBottom: 0,
   },
   listItemText: {

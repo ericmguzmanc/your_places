@@ -1,21 +1,17 @@
 import React, { PureComponent } from "react";
 import {
   View,
-  Text,
   StatusBar,
   StyleSheet,
-  TextInput,
-  Button
+  Text
 } from "react-native";
 
 import { Fonts } from "../utils/fonts";
-import ListItem from "../components/ListItem";
-import PlaceInput from "../components/PlaceInput";
-import PlaceList from "../components/PlaceList";
+import { PlaceInput, PlaceList } from "../components";
 
 class HomeScreen extends PureComponent {
+
   state = {
-    placeName: "",
     places: []
   };
 
@@ -23,34 +19,32 @@ class HomeScreen extends PureComponent {
   // header #7C4DFF
 
   static navigationOptions = {
-    title: "Home",
+    // title: "Home",
     headerStyle: {
       backgroundColor: "#6200EE"
     },
     headerTintColor: "#FFFFFF",
     headerTitleStyle: {
-      fontFamily: Fonts.OpenSansBold
-    }
+      fontFamily: Fonts.OpenSans
+    },
+    headerTitle: <Text style={{textAlign: 'left', flex: 1, fontFamily: Fonts.OpenSansBolder, fontSize: 20, color: "#FFFFFF", padding: 15}}> Home </Text>
   };
 
-  placeNameChangedHandler = val => {
-    this.setState({
-      placeName: val
+  placeAddedHandler = placeName => { 
+    this.setState( prevState => {
+      return {
+        places: prevState.places.concat(placeName)
+      }
     });
   };
 
-  placeSubmitHandler = () => {
-    if (this.state.placeName.trim() === "")
-      return;
-    
-    this.setState( prevState => {
+  placeDeletedHandler = (index) => {
+    this.setState(prevState => {
       return {
-        places: prevState.places.concat(prevState.placeName)
+        places: prevState.places.filter((place, i) => {
+          return i !== index
+        })
       }
-    }, () => { 
-      this.setState({
-        placeName: ""
-      });
     });
   };
 
@@ -58,13 +52,9 @@ class HomeScreen extends PureComponent {
     return (
       <View style={styles.container}>
         <StatusBar backgroundColor="#3700B3" barStyle="light-content" />
-        <PlaceInput 
-          placeNameChangedHandler={() => this.placeNameChangedHandler}
-          placeName={this.state.placeName}
-          placeSubmitHandler={() => this.placeSubmitHandler}
-        /> 
 
-        <PlaceList places={this.state.places} />
+        <PlaceInput onPlaceAdded={this.placeAddedHandler} /> 
+        <PlaceList places={this.state.places} onItemDeleted={this.placeDeletedHandler}/>
       </View>
     );
   }

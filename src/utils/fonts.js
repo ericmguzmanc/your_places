@@ -1,4 +1,5 @@
 export const Fonts = { 
   OpenSans: 'OpenSans-Regular',
-  OpenSansBold: 'OpenSans-SemiBold'
+  OpenSansBold: 'OpenSans-SemiBold',
+  OpenSansBolder: 'OpenSans-Bold'
 }
