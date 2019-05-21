@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     width: "100%",
     padding: 10,
     backgroundColor: "#eee",
-    marginBottom: 0,
+    marginBottom: 1,
   },
   listItemText: {
     fontFamily: Fonts.OpenSans,

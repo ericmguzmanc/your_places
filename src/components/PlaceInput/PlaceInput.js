@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     fontFamily: Fonts.OpenSansBolder
   },
   touchableContainer: {
-    width: "15%", 
+    width: "20%", 
     backgroundColor: "#03DAC5", 
     padding: 10, 
     elevation: 4, 
