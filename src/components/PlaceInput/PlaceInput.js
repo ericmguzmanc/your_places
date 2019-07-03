@@ -35,7 +35,7 @@ class PlaceInput extends PureComponent {
         value={this.state.placeName}
         placeholder="Awesome place"
         placeholderColor="gray"
-        selectionColor="#6200EE"
+        selectionColor="lightgray"
         underlineColorAndroid="#7C4DFF"
       />
 
