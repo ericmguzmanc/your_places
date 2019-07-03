@@ -7,12 +7,13 @@ import {
 } from "react-native";
 
 import { Fonts } from "../utils/fonts";
-import { PlaceInput, PlaceList } from "../components";
+import { PlaceInput, PlaceList, PlaceDetail } from "../components";
 
 class HomeScreen extends PureComponent {
 
   state = {
-    places: []
+    places: [],
+    selectedPlace: null
   };
 
   // status #6200EE
@@ -44,23 +45,44 @@ class HomeScreen extends PureComponent {
     });
   };
 
-  placeDeletedHandler = key => {
+  placeSelectedHandler = key => {
     this.setState(prevState => {
       return {
+        selectedPlace: prevState.places.find(place => place.key === key)
+      }
+    })
+  };
+
+  placeDeletedHandler = () => {
+     this.setState(prevState => {
+      return {
         places: prevState.places.filter( place => {
-          return place.key !== key
-        })
+          return place.key !== prevState.selectedPlace.key
+        }),
+        selectedPlace: null
       }
     });
-  };
+  }
+
+  modalClosedHandler = () => {
+    this.setState({
+      selectedPlace: null
+    });
+  }
 
   render() {
     return (
       <View style={styles.container}>
         <StatusBar backgroundColor="#3700B3" barStyle="light-content" />
 
+        <PlaceDetail 
+          selectedPlace={this.state.selectedPlace} 
+          onItemDeleted={this.placeDeletedHandler} 
+          onModalClosed={this.modalClosedHandler}
+          />
+
         <PlaceInput onPlaceAdded={this.placeAddedHandler} /> 
-        <PlaceList places={this.state.places} onItemDeleted={this.placeDeletedHandler}/>
+        <PlaceList places={this.state.places} onItemSelected={this.placeSelectedHandler}/>
       </View>
     );
   }
