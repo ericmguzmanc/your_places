@@ -1,10 +1,11 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { Fonts } from "../../utils/fonts";
 
 const ListItem = (props) => (
   <TouchableOpacity onPress={props.onItemPressed}>
     <View style={styles.listItem}>
+      <Image source={props.placeImage} resizeMode="cover" style={styles.placeImage} />
       <Text style={styles.listItemText}>{props.placeName}</Text>
     </View>
   </TouchableOpacity>
@@ -18,6 +19,13 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: "#eee",
     marginBottom: 1,
+    flexDirection: "row",
+    alignItems: "center"
+  },
+  placeImage: {
+    marginRight: 8,
+    height: 35,
+    width:35
   },
   listItemText: {
     fontFamily: Fonts.OpenSans,

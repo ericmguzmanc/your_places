@@ -35,7 +35,10 @@ class HomeScreen extends PureComponent {
       return {
         places: prevState.places.concat({
           key: Math.random().toString(), 
-          value:placeName
+          name: placeName,
+          image: {
+            uri: "https://www.westsideintltravel.com/wp-content/uploads/2015/04/germany-frankfort.jpg"
+          }
         })
       }
     });

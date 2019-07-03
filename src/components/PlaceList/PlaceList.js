@@ -5,7 +5,8 @@ import ListItem from '../ListItem/ListItem';
 const PlaceList = (props) => {
   const placesItemOutput = (item) => (
     <ListItem 
-      placeName={item.value} 
+      placeName={item.name}
+      placeImage={item.image} 
       onItemPressed={() => props.onItemDeleted(item.key)}
     />
   );
