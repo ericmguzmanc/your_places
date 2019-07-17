@@ -5,9 +5,10 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
-    "runa29": "cd C:/Users/erguzman/AppData/Local/Android/Sdk/emulator && emulator.exe -avd Pixel_2_API_29",
-    "runa28": "cd C:/Users/erguzman/AppData/Local/Android/Sdk/emulator && emulator.exe -avd Pixel_2_API_28",
-    "runa25": "cd C:/Users/erguzman/AppData/Local/Android/Sdk/emulator && emulator.exe -avd Pixel_2_API_25"
+    "runa29": "cd C:/Users/ericm/AppData/Local/Android/Sdk/emulator && emulator.exe -avd Pixel_2_API_29",
+    "runa28": "cd C:/Users/ericm/AppData/Local/Android/Sdk/emulator && emulator.exe -avd Pixel_2_API_28",
+    "runa25": "cd C:/Users/ericm/AppData/Local/Android/Sdk/emulator && emulator.exe -avd Pixel_2_API_25",
+    "runa24": "cd C:/Users/ericm/AppData/Local/Android/Sdk/emulator && emulator.exe -avd Pixel_API_24"
   },
   "dependencies": {
     "react": "16.8.3",
